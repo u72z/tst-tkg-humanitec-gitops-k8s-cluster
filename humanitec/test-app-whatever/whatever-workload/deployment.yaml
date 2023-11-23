@@ -1,0 +1,53 @@
+---
+# Source: default-module/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whatever-workload
+  labels:
+    
+    helm.sh/chart: default-module-1.16.11
+    
+    app.kubernetes.io/name: "whatever-workload"
+    app.kubernetes.io/instance: "whatever-workload"
+    app.kubernetes.io/managed-by: "Helm"
+spec:
+  # DeploymentSpec.paused - Ignored because no way of unsetting it
+  # DeploymentSepc.revisionHistoryLimit - Ignored because empty and 0 are different
+  selector:
+    matchLabels:
+      
+      app.kubernetes.io/name: "whatever-workload"
+      app.kubernetes.io/instance: "whatever-workload"
+  template:
+    metadata:
+      labels:
+        
+        app.kubernetes.io/name: "whatever-workload"
+        app.kubernetes.io/instance: "whatever-workload"
+      annotations:
+        checksum/config: 410cf7dd9649464c04e764d471210ef49cb1ad34071ef0e83a74a686c5334e49
+    spec:
+      # PodSpec.activeDeadlineSeconds - Ignored because it only really applies to Jobs
+      # PodSpec.dnsConfig - Ignored
+      # PodSpec.dnsPolicy - Ignored
+      # PodSpec.enableServiceLinks - Ignored because is set to true by default
+      # PodSpec.initContainers - Ignored for now because we need to solve the ordering problem first
+      # PosSprec.os - Ignored because this is an alpha field and requires the IdentifyPodOS feature
+      # PodSpec.serviceAccount - Ignored because it is officially deprecated
+      containers:
+        - name: sample-app
+          image: "registry.humanitec.io/public/sample-app:1.3.0"
+          resources:
+            limits:
+              cpu: "0.250"
+              memory: 256Mi
+            requests:
+              cpu: "0.025"
+              memory: 64Mi
+          envFrom:
+          - configMapRef:
+              name: whatever-workload-configmap-sample-app
+      imagePullSecrets:
+          []
+    # Volumes part

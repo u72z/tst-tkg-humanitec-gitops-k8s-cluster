@@ -1,0 +1,14 @@
+---
+# Source: default-module/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: whatever-workload-configmap-sample-app
+  labels:    
+    helm.sh/chart: default-module-1.16.11
+    
+    app.kubernetes.io/name: "whatever-workload"
+    app.kubernetes.io/instance: "whatever-workload"
+    app.kubernetes.io/managed-by: "Helm"
+data:
+  hello: world
