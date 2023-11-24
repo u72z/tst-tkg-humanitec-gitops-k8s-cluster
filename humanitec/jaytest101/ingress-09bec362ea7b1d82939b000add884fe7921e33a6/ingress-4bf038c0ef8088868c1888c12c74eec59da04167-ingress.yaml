@@ -1,0 +1,23 @@
+---
+# Source: shared-resources/templates/ingress-4bf038c0ef8088868c1888c12c74eec59da04167-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 4bf038c0ef8088868c1888c12c74eec59da04167-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: douglaswestlabadiereichelabbott.newapp.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: jaytest101
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - douglaswestlabadiereichelabbott.newapp.io
+    secretName: 2af5d92ffbff83d500f74ec0808947a394a75b8f-tls

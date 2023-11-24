@@ -1,0 +1,54 @@
+---
+# Source: default-module/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaytest101
+  labels:
+    
+    helm.sh/chart: default-module-1.16.11
+    
+    app.kubernetes.io/name: "jaytest101"
+    app.kubernetes.io/instance: "jaytest101"
+    app.kubernetes.io/managed-by: "Helm"
+spec:
+  # DeploymentSpec.paused - Ignored because no way of unsetting it
+  # DeploymentSepc.revisionHistoryLimit - Ignored because empty and 0 are different
+  selector:
+    matchLabels:
+      
+      app.kubernetes.io/name: "jaytest101"
+      app.kubernetes.io/instance: "jaytest101"
+  template:
+    metadata:
+      labels:
+        
+        app.kubernetes.io/name: "jaytest101"
+        app.kubernetes.io/instance: "jaytest101"
+      annotations:
+        checksum/config: 6c6df0fb23f75131e6d4111e11b5ee7dcdc05e35a0c2eb71a0363d1bc98f76d8
+        humanitec.io/managed-by: "score-humanitec"
+    spec:
+      # PodSpec.activeDeadlineSeconds - Ignored because it only really applies to Jobs
+      # PodSpec.dnsConfig - Ignored
+      # PodSpec.dnsPolicy - Ignored
+      # PodSpec.enableServiceLinks - Ignored because is set to true by default
+      # PodSpec.initContainers - Ignored for now because we need to solve the ordering problem first
+      # PosSprec.os - Ignored because this is an alpha field and requires the IdentifyPodOS feature
+      # PodSpec.serviceAccount - Ignored because it is officially deprecated
+      containers:
+        - name: frontend
+          image: "carolynvs/whalesayd:v0.1.1"
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 25m
+              memory: 64Mi
+          envFrom:
+          - configMapRef:
+              name: jaytest101-configmap-frontend
+      imagePullSecrets:
+          []
+    # Volumes part

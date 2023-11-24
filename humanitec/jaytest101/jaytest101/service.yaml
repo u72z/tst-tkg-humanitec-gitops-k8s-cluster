@@ -1,0 +1,24 @@
+---
+# Source: default-module/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaytest101
+  labels:
+    
+    helm.sh/chart: default-module-1.16.11
+    
+    app.kubernetes.io/name: "jaytest101"
+    app.kubernetes.io/instance: "jaytest101"
+    app.kubernetes.io/managed-by: "Helm"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 9898
+      protocol: TCP
+      name: port-www
+  selector:
+    
+    app.kubernetes.io/name: "jaytest101"
+    app.kubernetes.io/instance: "jaytest101"

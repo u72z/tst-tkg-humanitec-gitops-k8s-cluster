@@ -1,0 +1,14 @@
+---
+# Source: default-module/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jaytest101-configmap-frontend
+  labels:    
+    helm.sh/chart: default-module-1.16.11
+    
+    app.kubernetes.io/name: "jaytest101"
+    app.kubernetes.io/instance: "jaytest101"
+    app.kubernetes.io/managed-by: "Helm"
+data:
+  Hello: World
