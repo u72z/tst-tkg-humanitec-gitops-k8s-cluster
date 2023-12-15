@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: douglaswestlabadiereichelabbott.newapp.io
+  - host: jaytest101.development.evk8sbswc11.cmp.test.bs.ch
     http:
       paths:
       - backend:
@@ -19,5 +19,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - douglaswestlabadiereichelabbott.newapp.io
-    secretName: 2af5d92ffbff83d500f74ec0808947a394a75b8f-tls
+    - jaytest101.development.evk8sbswc11.cmp.test.bs.ch
+    secretName: defunct
