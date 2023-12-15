@@ -1,13 +1,13 @@
 ---
-# Source: shared-resources/templates/ingress-4bf038c0ef8088868c1888c12c74eec59da04167-ingress.yaml
+# Source: shared-resources/templates/ingress-f02a3e2f41d9e47b1dc2088023ceba57d34b6f9d-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: 4bf038c0ef8088868c1888c12c74eec59da04167-ingress
+  name: f02a3e2f41d9e47b1dc2088023ceba57d34b6f9d-ingress
 spec:
   ingressClassName: nginx
   rules:
-  - host: jaytest101.development.evk8sbswc11.cmp.test.bs.ch
+  - host: jaytest101.staging.evk8sbswc11.cmp.test.bs.ch
     http:
       paths:
       - backend:
@@ -19,5 +19,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - jaytest101.development.evk8sbswc11.cmp.test.bs.ch
+    - jaytest101.staging.evk8sbswc11.cmp.test.bs.ch
     secretName: defunct
